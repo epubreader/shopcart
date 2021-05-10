@@ -8,6 +8,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import RichTextEditor from '../components/Editor'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -46,6 +47,7 @@ const ProductEditScreen = ({ match, history }) => {
       setBrand(product.brand)
       setCategory(product.category)
       setCountInStock(product.countInStock)
+      console.log(description)
       setDescription(product.description)
     }
   }, [dispatch, history, product, productId, successUpdate])
@@ -156,14 +158,11 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
             <Form.Group controlId='description'>
               <Form.Label>Description</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter description'
+              <RichTextEditor
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={setDescription}
               />
             </Form.Group>
-
             <Button type='submit' variant='primary'>
               Update
             </Button>
