@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import slugify from '@sindresorhus/slugify'
 import Product from '../models/productModel.js'
 
 /**
@@ -34,6 +35,23 @@ const getProducts = asyncHandler(async (req, res) => {
  */
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
+
+  if (product) {
+    res.json(product)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
+/**
+ * @description     Fetch single product
+ * @route           GET /api/products/:id
+ * @access          Public
+ */
+const getProductBySlug = asyncHandler(async (req, res) => {
+  const { slug } = req.params
+  const product = await Product.findOne({ slug })
 
   if (product) {
     res.json(product)
@@ -106,6 +124,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.brand = brand
     product.category = category
     product.countInStoc = countInStock
+    product.slug = slugify(name)
 
     const updatedProduct = await product.save()
     res.status(201).json(updatedProduct)
@@ -168,6 +187,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 export {
   getProducts,
   getProductById,
+  getProductBySlug,
   deleteProduct,
   createProduct,
   updateProduct,

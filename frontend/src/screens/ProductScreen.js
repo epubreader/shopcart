@@ -8,7 +8,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Rating from '../components/Rating'
 import {
-  listProductDetails,
+  listProductDetailBySlug,
   createProductReview,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
@@ -40,7 +40,7 @@ const ProductScreen = ({ match, history }) => {
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
-    dispatch(listProductDetails(match.params.id))
+    dispatch(listProductDetailBySlug(match.params.id))
   }, [match, dispatch, successProductReview])
 
   const addToCartHandler = () => {
