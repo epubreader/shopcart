@@ -83,7 +83,7 @@ const ProductScreen = ({ match, history }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: £{product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product.description}
+                  <div dangerouslySetInnerHTML={{ __html: product.description }} />
                 </ListGroup.Item>
               </ListGroup>
             </Col>
