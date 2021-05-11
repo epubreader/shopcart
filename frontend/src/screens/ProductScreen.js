@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   Row, Col, Image, ListGroup, Card, Button, Form,
 } from 'react-bootstrap'
+import ReactHtmlParser from 'react-html-parser'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Rating from '../components/Rating'
@@ -83,7 +84,7 @@ const ProductScreen = ({ match, history }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: £{product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                  {ReactHtmlParser(product.description)}
                 </ListGroup.Item>
               </ListGroup>
             </Col>

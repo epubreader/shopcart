@@ -47,7 +47,6 @@ const ProductEditScreen = ({ match, history }) => {
       setBrand(product.brand)
       setCategory(product.category)
       setCountInStock(product.countInStock)
-      console.log(description)
       setDescription(product.description)
     }
   }, [dispatch, history, product, productId, successUpdate])
