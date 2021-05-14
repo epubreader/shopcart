@@ -1,6 +1,8 @@
-const mongoose = require('mongoose')
+import Order from './orderModel'
 
-const Product = require('./productModel')
+import mongoose from 'mongoose'
+
+import Product from './productModel'
 
 const categorySchema = mongoose.Schema(
   {
@@ -23,4 +25,4 @@ categorySchema.pre('remove', async function (req) {
 
 const Category = mongoose.model('Category', categorySchema)
 
-module.exports = Category
+export default Category
