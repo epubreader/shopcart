@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import {
-  Container, Table, Button, Row, Col,
+  Container, Table, Button, Row, Col, Card,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Loader from '../../components/Loader'
 import Message from '../../components/Message'
 import
@@ -83,9 +84,13 @@ const CategoryListScreen = ({
           <h1>Categories</h1>
         </Col>
         <Col className='text-right'>
-          <Button className='my-3' onClick={createCategoryHandler}>
-            <i className='fas fa-plus' /> Create Category
-          </Button>
+
+          <Link to='/admin/category'>
+            <Button className='my-3'>
+              <i className='fas fa-plus' /> Create Category
+            </Button>
+          </Link>
+
         </Col>
       </Row>
       {loadingDelete && <Loader />}
