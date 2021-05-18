@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-
+import slugify from '@sindresorhus/slugify'
 import Category from '../models/categoryModel'
 
 /*
@@ -17,6 +17,7 @@ const createCategory = asyncHandler(async (req, res) => {
   }
 
   const category = new Category({ user: req.user._id, name })
+  category.slug = slugify(name)
   await category.save()
   res.status(200).json(category)
 })
