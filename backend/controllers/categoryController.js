@@ -72,9 +72,31 @@ const deleteCategory = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Removed success.' })
 })
 
+// @desc    Update a category
+// @route   PUT /api/categorys/:id
+// @access  Private/Admin
+const updateCategory = asyncHandler(async (req, res) => {
+  console.log(req.params.id)
+  const { name } = req.body
+
+  const category = await Category.findById(req.params.id)
+
+  if (category) {
+    category.name = name
+    category.user = req.user._id
+    category.slug = slugify(name)
+    const updatedCategory = await category.save()
+    res.json(updatedCategory)
+  } else {
+    res.status(404)
+    throw new Error('Category not found')
+  }
+})
+
 export {
   createCategory,
   getAllCategories,
   getCategoryById,
   deleteCategory,
+  updateCategory,
 }

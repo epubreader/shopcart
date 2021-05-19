@@ -85,7 +85,7 @@ const CategoryListScreen = ({
         </Col>
         <Col className='text-right'>
 
-          <Link to='/admin/category'>
+          <Link to='/admin/category/create'>
             <Button className='my-3'>
               <i className='fas fa-plus' /> Create Category
             </Button>

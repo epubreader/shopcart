@@ -19,6 +19,7 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import CategoryListScreen from './screens/admin/CategoryListScreen'
 import CategoryCreateScreen from './screens/admin/CategoryCreateScreen'
+import CategoryEditScreen from './screens/admin/CategoryEditScreen'
 
 const App = () => (
   <Router>
@@ -41,7 +42,8 @@ const App = () => (
         <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
         <Route path='/admin/orderlist' component={OrderListScreen} />
         <Route path='/admin/categorylist' component={CategoryListScreen} />
-        <Route path='/admin/category' component={CategoryCreateScreen} />
+        <Route path='/admin/category/create' component={CategoryCreateScreen} />
+        <Route path='/admin/category/:id/edit' component={CategoryEditScreen} />
         <Route path='/search/:keyword' component={HomeScreen} exact />
         <Route path='/page/:pageNumber' component={HomeScreen} exact />
         <Route

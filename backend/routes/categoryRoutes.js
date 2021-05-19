@@ -6,6 +6,7 @@ import {
   getAllCategories,
   getCategoryById,
   deleteCategory,
+  updateCategory,
 } from '../controllers/categoryController'
 
 const router = express.Router()
@@ -19,5 +20,6 @@ router
   .route('/:id')
   .get(getCategoryById)
   .delete(protect, admin, deleteCategory)
+  .put(protect, admin, updateCategory)
 
 export default router
